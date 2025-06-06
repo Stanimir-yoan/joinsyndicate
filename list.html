@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Saved Entries</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h2>Saved Entries</h2>
+  <ul id="entryList"></ul>
+
+  <button class="clear-btn" onclick="clearEntries()">Clear All</button>
+
+  <script>
+    const list = document.getElementById('entryList');
+    const entries = JSON.parse(localStorage.getItem('emails')) || [];
+
+    function renderList() {
+      list.innerHTML = '';
+      if (entries.length === 0) {
+        list.innerHTML = '<li style="color: #888; font-style: italic;">No entries found.</li>';
+        return;
+      }
+
+      entries.forEach(entry => {
+        const li = document.createElement('li');
+        li.textContent = `${entry.type}: ${entry.value}`;
+        list.appendChild(li);
+      });
+    }
+
+    function clearEntries() {
+  if (confirm("Are you sure you want to delete all saved entries?")) {
+    localStorage.removeItem('emails');
+    location.reload(); // This will reload the page to show the updated empty state
+  }
+}
+
+    renderList();
+  </script>
+</body>
+</html>

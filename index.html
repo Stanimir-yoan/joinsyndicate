@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Submit Instagram Username</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h2>Submit Your Instagram Username</h2>
+
+  <form id="instaForm">
+    <input type="text" id="username" placeholder="@yourusername" required />
+    <button type="submit">Save Username</button>
+  </form>
+
+  <a class="secondary-link" href="email.html">I don't use Instagram</a>
+
+ <script>
+  function isValidInstagramUsername(username) {
+    const trimmed = username.trim();
+
+    // Remove leading @ if present
+    const cleanUsername = trimmed.startsWith('@') ? trimmed.slice(1) : trimmed;
+
+    // Regex: must start with a letter or number, followed by 0-29 of [a-zA-Z0-9._]
+    const regex = /^[a-zA-Z0-9](?!.*[._]{2})[a-zA-Z0-9._]{0,29}$/;
+
+    return regex.test(cleanUsername);
+  }
+
+  document.getElementById('instaForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const rawUsername = document.getElementById('username').value.trim();
+    const username = rawUsername.startsWith('@') ? rawUsername.slice(1) : rawUsername;
+
+    if (!isValidInstagramUsername(username)) {
+      alert("Please enter a valid Instagram username.\n\nUsernames can only contain letters, numbers, periods, and underscores. No spaces or special characters.");
+      return;
+    }
+
+    let entries = JSON.parse(localStorage.getItem('emails')) || [];
+
+    if (!entries.find(item => item.type === "Instagram" && item.value.toLowerCase() === username.toLowerCase())) {
+      entries.push({ type: "Instagram", value: username });
+      localStorage.setItem('emails', JSON.stringify(entries));
+      alert("Username saved!");
+    } else {
+      alert("This username is already saved.");
+    }
+
+    document.getElementById('username').value = '';
+  });
+</script>
+
+</body>
+</html>

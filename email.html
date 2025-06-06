@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Email Collector</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="styles.css">
+ <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <h2>FACTORY SYNDICATE</h2>
+  <p>You will miss all the visual content we provide via Instagram but still thankful you 're deciding to join us. Emails are never old school''you can be sure will recieve all of the news at time !</p>
+  <form id="emailForm">
+    <input type="email" id="email" placeholder="Enter your email" required />
+    <button type="submit">JOIN THE SYNDYCATE</button>
+  </form>
+
+
+
+  <script>
+    document.getElementById('emailForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      let emails = JSON.parse(localStorage.getItem('emails')) || [];
+
+      if (!emails.includes(email)) {
+        emails.push({ type: "Email", value: email });
+        localStorage.setItem('emails', JSON.stringify(emails));
+        alert("Email saved!");
+      } else {
+        alert("This email is already saved.");
+      }
+
+      document.getElementById('email').value = '';
+    });
+  </script>
+</body>
+</html>
