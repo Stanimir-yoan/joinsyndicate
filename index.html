@@ -9,6 +9,7 @@
 </head>
 <body>
   <h2>Submit Your Instagram Username</h2>
+  <button onclick="launchFullscreen()">Enter Fullscreen</button>
 
   <form id="instaForm">
     <input type="text" id="username" placeholder="@yourusername" required />
@@ -18,6 +19,16 @@
   <a class="secondary-link" href="email.html">I don't use Instagram</a>
 
  <script>
+
+function launchFullscreen() {
+  const el = document.documentElement;
+  if (el.requestFullscreen) el.requestFullscreen();
+  else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen(); // Safari
+  else if (el.msRequestFullscreen) el.msRequestFullscreen(); // IE11
+}
+
+
+
   function isValidInstagramUsername(username) {
     const trimmed = username.trim();
 
