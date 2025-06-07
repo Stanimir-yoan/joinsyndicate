@@ -1,4 +1,9 @@
 /* styles.css */
+@font-face {
+  font-family: "factory-font";
+  src: url("KonstruktorRegular.ttf");
+}
+
 
 body {
   background-color: #000;
@@ -6,11 +11,46 @@ body {
   font-family: Arial, sans-serif;
   padding: 2rem;
   text-align: center;
-}
+  background-image: url('bg.jpg');
+  background-size: cover;
 
-h2 {
+}
+.wrapper{
+  display: block;
+  margin: 0 auto;
+  width: 70%;
+}
+.logo{
+    position: absolute;
+    bottom: 7%;
+    display: block;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 10%;
+}
+p{
+  font-size: 1.8rem;
+}
+input{
+  padding: 20px;
+  width: 30%;
+  font-size: 1.5rem;
+}
+.button-style-1{
+  background-color: #cc0000;
+  padding: 20px;
+  width: 10%;
+  font-size: 1.5rem;
+  border: none;
+  color: #fff;
+}
+h2 {  
   color: #ff0000;
   margin-bottom: 1rem;
+}
+h1{
+  font-family: "factory-font";
 }
 
 ul {
@@ -27,6 +67,12 @@ li {
   padding: 0.75rem 1rem;
   border-left: 4px solid #ff0000;
   border-radius: 4px;
+}
+
+.secondary-link{
+  display: block;
+  margin: 20px auto;
+  color: #ffffffc2;
 }
 
 .clear-btn {

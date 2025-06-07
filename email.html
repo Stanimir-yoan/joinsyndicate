@@ -8,16 +8,20 @@
  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <h2>FACTORY SYNDICATE</h2>
-  <p>You will miss all the visual content we provide via Instagram but still thankful you 're deciding to join us. Emails are never old school''you can be sure will recieve all of the news at time !</p>
+    <div class="wrapper">
+  <h2> NOT USING INSTAGRAM ? THAT'S BOTH - COOL AND WIERD.</h2>
+  <p>If you want to be part of the SYNDICATE but not using Instagram as a social platform, no problemo, we got you. Provide your email adress and get every benefits that anyone in the SYNDICATE has.</p>
+  </div>
+  
   <form id="emailForm">
     <input type="email" id="email" placeholder="Enter your email" required />
-    <button type="submit">JOIN THE SYNDYCATE</button>
+    <button type="submit" class="button-style-1">JOIN</button>
   </form>
 
 
 
   <script>
+
     document.getElementById('emailForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const email = document.getElementById('email').value;
@@ -26,7 +30,7 @@
       if (!emails.includes(email)) {
         emails.push({ type: "Email", value: email });
         localStorage.setItem('emails', JSON.stringify(emails));
-        alert("Email saved!");
+        alert("WELCOME IN THE SYNDICATE!");
       } else {
         alert("This email is already saved.");
       }

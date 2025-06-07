@@ -8,26 +8,23 @@
 <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <h2>Submit Your Instagram Username</h2>
-  <button onclick="launchFullscreen()">Enter Fullscreen</button>
+  <div class="wrapper">
+
+    <h1><span style="font-size: 4rem;">FACTORY</span></br><span style="font-size: 2rem;letter-spacing: 3px;">JOIN THE SYNDICATE</span></h1>
+    <p style="background-color: rgba(0, 0, 0, 0.5);">Get in the inner circle and be the first to recieve News, Offers & Discounts. You also will "sit on the round table" with us and helps us make deciosion for the future of OUR FAVORITE SECRET RAVE</p>
+    
+  </div>
 
   <form id="instaForm">
     <input type="text" id="username" placeholder="@yourusername" required />
-    <button type="submit">Save Username</button>
+    <button type="submit" class="button-style-1"><b>JOIN</b></button>
   </form>
 
-  <a class="secondary-link" href="email.html">I don't use Instagram</a>
+  <a class="secondary-link" href="email.html"><i>I don't use Instagram.</i></a>
+
+  <img class="logo" src="LOGO.png" alt="">
 
  <script>
-
-function launchFullscreen() {
-  const el = document.documentElement;
-  if (el.requestFullscreen) el.requestFullscreen();
-  else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen(); // Safari
-  else if (el.msRequestFullscreen) el.msRequestFullscreen(); // IE11
-}
-
-
 
   function isValidInstagramUsername(username) {
     const trimmed = username.trim();
@@ -56,7 +53,7 @@ function launchFullscreen() {
     if (!entries.find(item => item.type === "Instagram" && item.value.toLowerCase() === username.toLowerCase())) {
       entries.push({ type: "Instagram", value: username });
       localStorage.setItem('emails', JSON.stringify(entries));
-      alert("Username saved!");
+      alert("WELCOME IN THE SYNDICATE!");
     } else {
       alert("This username is already saved.");
     }
